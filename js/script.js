@@ -1,19 +1,36 @@
 let canvas = document.getElementById('canva');
 let ctx = canvas.getContext('2d');
 
-canvas.onmousedown = function(e){
+canvas.addEventListener('mousedown', function(){
 	canvas.onmousemove = function(e){
 		let x = e.offsetX;
 		let y = e.offsetY;
-		console.log(x, y);
-		ctx.fillRect(x, y, 2, 2);
-		ctx.fillStyle = 'red';
+		ctx.beginPath();
+		ctx.arc(x,y,5,0, Math.PI * 2);
+		ctx.fillStyle = 'black';
+		// ctx.rect(x, y, 5, 5,);
 		ctx.fill();
+		canvas.style.cursor = 'pointer';
 	}
 	canvas.onmouseup = function(){
 		canvas.onmousemove = null;
+		canvas.style.cursor = 'default';
+
 	}
-}
+})
+
+// canvas.onmousedown = function(e){
+// 	canvas.onmousemove = function(e){
+// 		let x = e.offsetX;
+// 		let y = e.offsetY;
+// 		ctx.fillRect(x, y, 2, 2);
+// 		ctx.fillStyle = 'red';
+// 		ctx.fill();
+// 	}
+// 	canvas.onmouseup = function(){
+// 		canvas.onmousemove = null;
+// 	}
+// }
 
 
 
