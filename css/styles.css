@@ -1,0 +1,81 @@
+body {
+   background-color: #1d1f2f;
+   margin: 0;
+}
+.top {
+   background-color: #282729;
+   height: 100px;
+   display: flex;
+   align-items: center;
+   padding: 20px;
+   box-sizing: border-box;
+   box-shadow: 1px 1px 5px #000;
+}
+.top div {
+	display: flex;
+	align-items: center;
+	margin-right: 40px;
+}
+.top ul {
+   margin: 0;
+   list-style-type: none;
+   padding: 0;
+}
+.colors {
+   display: flex;
+}
+.colors li {
+   width: 20px;
+   height: 20px;
+   border: solid 1px #fff;
+   border-radius: 50%;
+   margin-right: 5px;
+   cursor: pointer;
+}
+.colors li[data-color="#000"] {
+	background-color: black;
+}
+.colors li[data-color="#8a8a8a"] {
+	background-color: #8a8a8a;
+}
+.colors li[data-color="#92001c"] {
+	background-color: #92001c;
+}
+.colors li[data-color="red"] {
+	background-color: red;
+}
+.colors li[data-color="orange"] {
+	background-color: orange;
+}
+.colors li[data-color="yellow"] {
+	background-color: yellow;
+}
+.colors li[data-color="green"] {
+	background-color: green;
+}
+.colors li[data-color="#00aaea"] {
+	background-color: #00aaea;
+}
+.colors li[data-color="#4a53d1"] {
+	background-color: #4a53d1;
+}
+.colors li[data-color="#ab54ac"] {
+	background-color: #ab54ac;
+}
+input[type="color"]{
+	height: 40px;
+	width: 40px;
+	overflow: hidden;
+	background-color: #000;
+	cursor: pointer;
+}
+input[type="range"]{
+	background-color: #000;
+	color: #000;
+}
+canvas {
+	width: 600px;
+	height: 600px;
+   margin-top: 5px;
+   background-color: #fff;
+}
