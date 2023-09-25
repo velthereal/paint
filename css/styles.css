@@ -11,7 +11,7 @@ body {
    box-sizing: border-box;
    box-shadow: 1px 1px 5px #000;
 }
-.top div {
+.top .colorsBlock {
 	display: flex;
 	align-items: center;
 	margin-right: 40px;
@@ -72,6 +72,23 @@ input[type="color"]{
 input[type="range"]{
 	background-color: #000;
 	color: #000;
+}
+.figure {
+	box-sizing: border-box;
+	width: 30px;
+	height: 30px;
+	border: solid 1px #ccc;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	margin-left: 20px;
+}
+.figure .square {
+	box-sizing: border-box;
+	width: 20px;
+	height: 20px;
+	border: solid 1px #fff;
 }
 canvas {
 	width: 900px;
