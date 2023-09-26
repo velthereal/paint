@@ -52,27 +52,32 @@ canvas.addEventListener('mousedown', (e) => {
 			 canvas.onmousemove = null;
 		}
 	} 
-	// else {
-	// 	canvas.addEventListener('mousemove', (e) => {
-	// 		if (!isDrawing) return;
+	else {
+		startX = e.offsetX;
+		startY = e.offsetY;
+		console.log(startX, startY)
+		canvas.addEventListener('mousemove', (e) => {
+			if (!isDrawing) return;
 		
-	// 		let x = e.clientX - canvas.getBoundingClientRect().left;
-	// 		let y = e.clientY - canvas.getBoundingClientRect().top;
+			let x = e.offsetX;
+			let y = e.offsetY;
+			
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
 		
-	// 		ctx.clearRect(0, 0, canvas.width, canvas.height);
+			ctx.strokeStyle = currentColor;
+			ctx.lineWidth = 2;
+			ctx.strokeRect(startX, startY, x - startX, y - startY);
+		});
 		
-	// 		ctx.strokeStyle = currentColor;
-	// 		ctx.lineWidth = 2;
-	// 		ctx.strokeRect(startX, startY, x - startX, y - startY);
-	// 	});
 		
-	// 	canvas.addEventListener('mouseup', () => {
-	// 		isDrawing = false;
-	// 	});
-	// }
+			canvas.onmouseup = function() {
+				canvas.onmousemove = null;
+				isDrawing = false;
+		   }
+			// isDrawing = false;
+		
+	}
 });
-
-
 
 
 penSize.addEventListener('input', () => {
