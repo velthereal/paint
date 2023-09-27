@@ -9,22 +9,7 @@ let currentColor = 'black';
 let penSize = document.querySelector('input[type="range"]');
 let size = 50 / 5;
 
-
-// canvas.addEventListener('mousedown', function(){
-// 	canvas.onmousemove = function(e){
-// 		let x = e.offsetX;
-// 		let y = e.offsetY;
-// 		ctx.beginPath();
-// 		ctx.arc(x,y,size,0, Math.PI * 2);
-// 		ctx.fillStyle = currentColor;
-// 		ctx.fill();
-// 	}
-// 	canvas.onmouseup = function(){
-// 		canvas.onmousemove = null;
-// 	}
-// });
-
-let square = document.querySelector('.figure .square');
+let square = document.querySelector('.figure.square');
 let isDrawing = false;
 let startX, startY;
 square.addEventListener('click', function(){
@@ -40,25 +25,24 @@ canvas.addEventListener('mousedown', (e) => {
 		ctx.fill();
 
 		canvas.onmousemove = function(e) {
-			 let x = e.offsetX;
-			 let y = e.offsetY;
-			 ctx.beginPath();
-			 ctx.arc(x, y, size, 0, Math.PI * 2);
-			 ctx.fillStyle = currentColor;
-			 ctx.fill();
+			let x = e.offsetX;
+			let y = e.offsetY;
+			ctx.beginPath();
+			ctx.arc(x, y, size, 0, Math.PI * 2);
+			ctx.fillStyle = currentColor;
+			ctx.fill();
 		}
 
 		canvas.onmouseup = function() {
-			 canvas.onmousemove = null;
+			canvas.onmousemove = null;
 		}
 	} 
 	else {
 		startX = e.offsetX;
 		startY = e.offsetY;
-		console.log(startX, startY)
 		canvas.addEventListener('mousemove', (e) => {
 			if (!isDrawing) return;
-		
+
 			let x = e.offsetX;
 			let y = e.offsetY;
 			
@@ -69,16 +53,12 @@ canvas.addEventListener('mousedown', (e) => {
 			ctx.strokeRect(startX, startY, x - startX, y - startY);
 		});
 		
-		
-			canvas.onmouseup = function() {
-				canvas.onmousemove = null;
-				isDrawing = false;
-		   }
-			// isDrawing = false;
-		
+		canvas.onmouseup = function() {
+			canvas.onmousemove = null;
+			isDrawing = false;
+		}
 	}
 });
-
 
 penSize.addEventListener('input', () => {
 	size = penSize.value / 5;
