@@ -10,20 +10,33 @@ let penSize = document.querySelector('input[type="range"]');
 let size = 50 / 5;
 
 let square = document.querySelector('.figure.square');
+let pen = document.querySelector('.figure.pen');
 let isDrawing = false;
 let startX, startY;
-square.addEventListener('click', function(){
-	isDrawing = true;
-});
-canvas.addEventListener('mousedown', (e) => {
-	if(!isDrawing){
-		let x = e.offsetX;
-		let y = e.offsetY;
-		ctx.beginPath();
-		ctx.arc(x, y, size, 0, Math.PI * 2);
-		ctx.fillStyle = currentColor;
-		ctx.fill();
+square.addEventListener('click', clickSquare);
+pen.addEventListener('click', clickPen);
+function clickSquare(){
+	canvas.addEventListener('mousedown', (e) => {
+		startX = e.offsetX;
+		startY = e.offsetY;
+		canvas.onmousemove = function(e) {
+			let x = e.offsetX;
+			let y = e.offsetY;
+			
+			ctx.clearRect(0, 0, canvas.width, canvas.height);
+		
+			ctx.strokeStyle = currentColor;
+			ctx.lineWidth = 2;
+			ctx.strokeRect(startX, startY, x - startX, y - startY);
+		}
 
+		canvas.onmouseup = function() {
+			canvas.onmousemove = null;
+		}
+	});
+}
+function clickPen(){
+	canvas.addEventListener('mousedown', (e) => {
 		canvas.onmousemove = function(e) {
 			let x = e.offsetX;
 			let y = e.offsetY;
@@ -36,29 +49,8 @@ canvas.addEventListener('mousedown', (e) => {
 		canvas.onmouseup = function() {
 			canvas.onmousemove = null;
 		}
-	} 
-	else {
-		startX = e.offsetX;
-		startY = e.offsetY;
-		canvas.addEventListener('mousemove', (e) => {
-			if (!isDrawing) return;
-
-			let x = e.offsetX;
-			let y = e.offsetY;
-			
-			ctx.clearRect(0, 0, canvas.width, canvas.height);
-		
-			ctx.strokeStyle = currentColor;
-			ctx.lineWidth = 2;
-			ctx.strokeRect(startX, startY, x - startX, y - startY);
-		});
-		
-		canvas.onmouseup = function() {
-			canvas.onmousemove = null;
-			isDrawing = false;
-		}
-	}
-});
+	});
+}
 
 penSize.addEventListener('input', () => {
 	size = penSize.value / 5;

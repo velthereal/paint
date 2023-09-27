@@ -90,6 +90,14 @@ input[type="range"]{
 	height: 20px;
 	border: solid 1px #fff;
 }
+.figure .pen {
+	box-sizing: border-box;
+	transform: rotate(45deg);
+	width: 4px;
+	height: 25px;
+	border: solid 1px #fff;
+	border-radius: 5px;
+}
 canvas {
 	width: 900px;
 	height: 600px;
